@@ -36,7 +36,7 @@ public class LogIn {
        String expectedmessage= "Invalid User Name or PassWord";
        String actualmessage= invalidmsg.getText();
         Assert.assertEquals("textul cautat nu este correct",expectedmessage,actualmessage);
-        driver.close();
+      //  driver.close();
         //diferenta dintre close si quit, quit=inchidem toate taburile
         //close inchise doar tab-ul curent
     }
