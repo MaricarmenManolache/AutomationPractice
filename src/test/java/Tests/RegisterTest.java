@@ -30,7 +30,7 @@ public class RegisterTest {
         LastName.sendKeys("Manolache");
 
         WebElement Adress = driver.findElement(By.cssSelector("[ng-model='Adress']"));
-        Adress.sendKeys("Floresti village");
+        Adress.sendKeys("Floresti");
 
         WebElement EmailAdressElement = driver.findElement(By.cssSelector("[ng-model='EmailAdress']"));
         EmailAdressElement.sendKeys("manoalche.maricarmen7@gmail.com");
