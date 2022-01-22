@@ -1,14 +1,13 @@
 package Tests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class RegisterTest {
     public WebDriver driver;
@@ -67,8 +66,41 @@ public class RegisterTest {
         WebElement Gender = driver.findElement(By.cssSelector("[value='FeMale']"));
         Gender.click();
 
+        WebElement LanguageDropdownElement = driver.findElement(By.id("msdd"));
+        LanguageDropdownElement.click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)");
 
 
+
+        //declaram lista de elemente
+        List <WebElement> LanguageOptionsElement = driver.findElements(By.cssSelector("ul.ui-autocomplete.ui-front>li>a"));
+        for (int index=0; index < LanguageOptionsElement.size(); index++) {
+            if (LanguageOptionsElement.get(index).getText().equals("Urdu")
+                    || (LanguageOptionsElement.get(index).getText().equals("English")
+                    ||(LanguageOptionsElement.get(index).getText().equals("Arabic"))))
+            {
+                LanguageOptionsElement.get(index).click();
+            }
+        }
+
+
+        // il inchidem
+        PhoneElement.click();
+        WebElement SelectCountry = driver.findElement(By.cssSelector("span[role='combobox']"));
+        SelectCountry.click();
+        WebElement InputCountry = driver.findElement(By.className("select2-search__field"));
+        InputCountry.sendKeys("Bangladesh");
+        InputCountry.sendKeys(Keys.ENTER);
+
+        WebElement SubmitElement = driver.findElement(By.id("submitbtn"));
+        SubmitElement.click();
+
+    WebElement Image = driver.findElement(By.id("imagesrc"));
+    Image.sendKeys("D:\\random\\65265296_2436148643130665_8232381803013341184_n.jpg");
+
+    driver.close();
 
 
 
