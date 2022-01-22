@@ -13,6 +13,8 @@ import java.util.List;
 public class RegisterTest {
     public WebDriver driver;
 
+    //daca avem mai multe elemente cu acelasi nume, le diferentiem prin parinte "form>"
+
     @Test
     public void RegisterTest() {
         System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
@@ -45,8 +47,7 @@ public class RegisterTest {
         Hobbies2.click();
 
         Select Dropdown = new Select(driver.findElement(By.id("Skills")));
-        Dropdown.selectByValue("Adobe Photoshop");
-
+        Dropdown.selectByIndex(7);
 
         WebElement Password = driver.findElement(By.id("secondpassword"));
         Password.sendKeys("Maricarmen");
@@ -63,10 +64,16 @@ public class RegisterTest {
         Select DayElement = new Select(driver.findElement(By.id("daybox")));
         DayElement.selectByIndex(7);
 
-
-
         WebElement Gender = driver.findElement(By.cssSelector("[value='FeMale']"));
         Gender.click();
+
+
+
+
+
+
+
+
 
 
 
