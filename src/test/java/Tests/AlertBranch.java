@@ -38,25 +38,19 @@ public class AlertBranch extends SharedData {
         Ok.accept();
 
         AlerOptions.get(1).click();
-            WebElement OkCancell= driver.findElement(By.cssSelector("#CancelTab>button"));
+        WebElement OkCancell= driver.findElement(By.cssSelector("#CancelTab>button"));
         OkCancell.click();
         Alert Cancel= driver.switchTo().alert();
         Cancel.dismiss();
 
-        OkCancell.click();
-        Cancel.accept();
 
         AlerOptions.get(2).click();
         WebElement TextboXalert= driver.findElement(By.cssSelector("#Textbox>button"));
         TextboXalert.click();
         Alert Text= driver.switchTo().alert();
         Text.sendKeys("Buna Prieteni");
-
-
         Text.accept();
 
 
     }
-
-
 }
