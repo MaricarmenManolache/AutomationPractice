@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.SharedData;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,17 +10,14 @@ import java.awt.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class RegisterTest {
-    public WebDriver driver;
+public class RegisterTest extends SharedData {
+
 
     //daca avem mai multe elemente cu acelasi nume, le diferentiem prin parinte "form>"
 
     @Test
     public void RegisterTest() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("http://demo.automationtesting.in/Index.html");
-        driver.manage().window().maximize();
+
 
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
         SkipsignIn.click();
@@ -97,10 +95,10 @@ public class RegisterTest {
         WebElement SubmitElement = driver.findElement(By.id("submitbtn"));
         SubmitElement.click();
 
-    WebElement Image = driver.findElement(By.id("imagesrc"));
-    Image.sendKeys("D:\\random\\65265296_2436148643130665_8232381803013341184_n.jpg");
+         WebElement Image = driver.findElement(By.id("imagesrc"));
+         Image.sendKeys("D:\\random\\65265296_2436148643130665_8232381803013341184_n.jpg");
 
-    driver.close();
+         driver.close();
 
 
 
