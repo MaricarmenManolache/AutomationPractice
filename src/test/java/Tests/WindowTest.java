@@ -1,6 +1,8 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
+import Help.WindowMethods;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,8 +13,11 @@ import java.util.List;
 
 public class WindowTest extends SharedData {
 
+    public WindowMethods windowMethods;
+    public ElementMethods elementMethods;
     @Test
         public void testAutomat() {
+        windowMethods=new WindowMethods(driver);
 
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
         SkipsignIn.click();
@@ -33,49 +38,33 @@ public class WindowTest extends SharedData {
         WebElement ClickBtn= driver.findElement(By.cssSelector("#Tabbed>a>button"));
         ClickBtn.click();
 
-        System.out.println("Titlul paginii: "+driver.getTitle());
-        List<String> Tabs= new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(Tabs.get(1));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+       windowMethods.switchTOTab(1);
 
         driver.close();
-        driver.switchTo().window(Tabs.get(0));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+        windowMethods.switchTOTab(0);
 
         WindowsOptions.get(1).click();
 
         WebElement ButonClick= driver.findElement(By.cssSelector("button[class='btn btn-primary']"));
         ButonClick.click();
 
-        System.out.println("Titlul paginii: "+driver.getTitle());
-        List<String> Windows= new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(Windows.get(1));
-        System.out.println("Titlul ferestrei: "+driver.getTitle());
+        windowMethods.switchTOTab(1);
 
         driver.close();
-        driver.switchTo().window(Windows.get(0));
-        System.out.println("Titlul ferestrei: "+driver.getTitle());
+        windowMethods.switchTOTab(0);
 
         WindowsOptions.get(2).click();
 
         WebElement Click3= driver.findElement(By.cssSelector("button[onclick='multiwindow()']"));
         Click3.click();
 
-        System.out.println("Titlul paginii: "+driver.getTitle());
-        List<String> MultipleTabs= new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(MultipleTabs.get(1));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+      windowMethods.switchTOTab(2);
 
-        driver.close();
-        driver.switchTo().window(MultipleTabs.get(0));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+        windowMethods.closeCurrentTab();
+       windowMethods.switchTOTab(1);
 
-        driver.switchTo().window(MultipleTabs.get(2));
-        System.out.println("Titlul paginii: "+driver.getTitle());
-
-        driver.close();
-        driver.switchTo().window(MultipleTabs.get(0));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+       windowMethods.closeCurrentTab();
+       windowMethods.switchTOTab(0);
 
 
 

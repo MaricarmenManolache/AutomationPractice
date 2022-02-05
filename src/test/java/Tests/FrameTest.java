@@ -1,15 +1,20 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
+import Help.FrameMethods;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class FrameTest extends SharedData {
-
+       public FrameMethods frameMethods;
+       public ElementMethods elementMethods;
     @Test
     public void testAutomat(){
+        frameMethods= new FrameMethods(driver);
+        elementMethods= new ElementMethods(driver);
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
         SkipsignIn.click();
 
@@ -22,21 +27,21 @@ public class FrameTest extends SharedData {
         AlertsElement.click();
 
         driver.navigate().to("http://demo.automationtesting.in/Frames.html");
-        driver.switchTo().frame("singleframe");
-
+        frameMethods.switckToFramebyID("singleframe");
         WebElement Input= driver.findElement(By.cssSelector("input[type='text']"));
-        Input.sendKeys("Hello World");
+        elementMethods.fillElement(Input,"Henlo");
 
-        driver.switchTo().defaultContent();
+        frameMethods.switchToDefault();
 
         WebElement Frames= driver.findElement(By.cssSelector("li>a[href='#Multiple']"));
         Frames.click();
 
-        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
-        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[src='SingleFrame.html']")));
+            frameMethods.switckToFramebyElement(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
+
+        frameMethods.switckToFramebyElement(driver.findElement(By.cssSelector("iframe[src='SingleFrame.html']")));
 
         WebElement Text= driver.findElement(By.cssSelector("input[type='text']"));
-        Text.sendKeys("Hi");
+        elementMethods.fillElement(Text,"Test");
 
 
     }

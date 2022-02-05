@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,13 +12,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RegisterTest extends SharedData {
-
-
     //daca avem mai multe elemente cu acelasi nume, le diferentiem prin parinte "form>"
-
+    public ElementMethods elementMethods;
     @Test
     public void RegisterTest() {
-
+        elementMethods= new ElementMethods(driver);
 
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
         SkipsignIn.click();
@@ -43,8 +42,8 @@ public class RegisterTest extends SharedData {
         WebElement Hobbies2 = driver.findElement(By.id("checkbox3"));
         Hobbies2.click();
 
-        Select Dropdown = new Select(driver.findElement(By.id("Skills")));
-        Dropdown.selectByIndex(7);
+        WebElement skills = driver.findElement(By.id("Skills"));
+        elementMethods.selectElementByText(skills,"Java");
 
         WebElement Password = driver.findElement(By.id("secondpassword"));
         Password.sendKeys("Maricarmen");
@@ -54,9 +53,8 @@ public class RegisterTest extends SharedData {
 
         Select YearElement = new Select((driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[11]/div[1]/select"))));
         YearElement.selectByValue("1998");
-
-        Select MonthElement = new Select(driver.findElement(By.cssSelector("[ng-model='monthbox']")));
-        MonthElement.selectByValue("July");
+        WebElement MonthElement= driver.findElement(By.cssSelector("[ng-model='monthbox']"));
+        elementMethods.selectElementByValue((WebElement) MonthElement,"July");
 
         Select DayElement = new Select(driver.findElement(By.id("daybox")));
         DayElement.selectByIndex(7);
