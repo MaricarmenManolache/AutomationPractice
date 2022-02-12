@@ -18,6 +18,7 @@ public class WindowTest extends SharedData {
     @Test
         public void testAutomat() {
         windowMethods=new WindowMethods(driver);
+        elementMethods= new ElementMethods(driver);
 
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
         elementMethods.clickElement(SkipsignIn);
@@ -33,7 +34,7 @@ public class WindowTest extends SharedData {
         driver.navigate().to("http://demo.automationtesting.in/Windows.html");
 
         List<WebElement> WindowsOptions = driver.findElements(By.cssSelector(".nav-tabs>li>a"));
-        WindowsOptions.get(0).click();
+        elementMethods.clickElement(WindowsOptions.get(0));
 
         WebElement ClickBtn= driver.findElement(By.cssSelector("#Tabbed>a>button"));
         elementMethods.clickElement(ClickBtn);
@@ -43,7 +44,7 @@ public class WindowTest extends SharedData {
         driver.close();
         windowMethods.switchTOTab(0);
 
-        WindowsOptions.get(1).click();
+        elementMethods.clickElement(WindowsOptions.get(1));
 
         WebElement ButonClick= driver.findElement(By.cssSelector("button[class='btn btn-primary']"));
         elementMethods.clickElement(ButonClick);
@@ -53,7 +54,7 @@ public class WindowTest extends SharedData {
         driver.close();
         windowMethods.switchTOTab(0);
 
-        WindowsOptions.get(2).click();
+        elementMethods.clickElement(WindowsOptions.get(2));
 
         WebElement Click3= driver.findElement(By.cssSelector("button[onclick='multiwindow()']"));
        elementMethods.clickElement(Click3);
