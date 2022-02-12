@@ -3,6 +3,7 @@ package Help;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,5 +38,12 @@ public class FrameMethods {
 
     public void switchToDefault(){
         driver.switchTo().defaultContent();
+    }
+
+    public void switchtoFrame(WebElement element){
+
+        Actions Action = new Actions(driver);
+        //instructiune, executie
+        Action.moveToElement(element).perform();
     }
 }

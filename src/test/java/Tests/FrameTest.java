@@ -16,15 +16,13 @@ public class FrameTest extends SharedData {
         frameMethods= new FrameMethods(driver);
         elementMethods= new ElementMethods(driver);
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
-        SkipsignIn.click();
+        elementMethods.clickElement(SkipsignIn);
 
         WebElement SwitchTo = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions Action = new Actions(driver);
-        //instructiune, executie
-        Action.moveToElement(SwitchTo).perform();
+        frameMethods.switchtoFrame(SwitchTo);
 
         WebElement AlertsElement = driver.findElement(By.xpath("//a[text()='Frames']"));
-        AlertsElement.click();
+        elementMethods.clickElement(AlertsElement);
 
         driver.navigate().to("http://demo.automationtesting.in/Frames.html");
         frameMethods.switckToFramebyID("singleframe");
@@ -34,9 +32,9 @@ public class FrameTest extends SharedData {
         frameMethods.switchToDefault();
 
         WebElement Frames= driver.findElement(By.cssSelector("li>a[href='#Multiple']"));
-        Frames.click();
+        elementMethods.clickElement(Frames);
 
-            frameMethods.switckToFramebyElement(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
+        frameMethods.switckToFramebyElement(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
 
         frameMethods.switckToFramebyElement(driver.findElement(By.cssSelector("iframe[src='SingleFrame.html']")));
 

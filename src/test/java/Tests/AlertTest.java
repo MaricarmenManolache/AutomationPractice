@@ -44,6 +44,7 @@ public class AlertTest extends SharedData {
         List<WebElement> AlerOptions = driver.findElements(By.cssSelector(".nav-tabs>li>a"));
         AlerOptions.get(0).click();
 
+
         WebElement AlertOk = driver.findElement(By.cssSelector("#OKTab>button"));
         elementMethods.clickElement(AlertOk);
 
@@ -67,7 +68,7 @@ public class AlertTest extends SharedData {
 
         AlerOptions.get(2).click();
         WebElement TextboXalert= driver.findElement(By.cssSelector("#Textbox>button"));
-        TextboXalert.click();
+        elementMethods.clickElement(TextboXalert);
         alertMethods.acceptFillALert("Buna ziua prieteni");
 
 

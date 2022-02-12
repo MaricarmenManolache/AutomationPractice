@@ -55,4 +55,13 @@ public class ElementMethods {
         Select MonthElement = new Select(element);
         MonthElement.selectByValue(value);
     }
+
+    public void selectElementbyIndex (WebElement element, Integer index){
+        Select MonthElement = new Select(element);
+        MonthElement.selectByIndex(index);
+    }
+
+    public void Image(WebElement element,String value){
+        element.sendKeys(value);
+    }
 }

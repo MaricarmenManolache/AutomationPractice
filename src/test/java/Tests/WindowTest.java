@@ -20,7 +20,7 @@ public class WindowTest extends SharedData {
         windowMethods=new WindowMethods(driver);
 
         WebElement SkipsignIn = driver.findElement(By.id("btn2"));
-        SkipsignIn.click();
+        elementMethods.clickElement(SkipsignIn);
 
         WebElement SwitchTo = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
         Actions Action = new Actions(driver);
@@ -28,7 +28,7 @@ public class WindowTest extends SharedData {
         Action.moveToElement(SwitchTo).perform();
 
         WebElement AlertsElement = driver.findElement(By.xpath("//a[text()='Windows']"));
-        AlertsElement.click();
+        elementMethods.clickElement(AlertsElement);
 
         driver.navigate().to("http://demo.automationtesting.in/Windows.html");
 
@@ -36,9 +36,9 @@ public class WindowTest extends SharedData {
         WindowsOptions.get(0).click();
 
         WebElement ClickBtn= driver.findElement(By.cssSelector("#Tabbed>a>button"));
-        ClickBtn.click();
+        elementMethods.clickElement(ClickBtn);
 
-       windowMethods.switchTOTab(1);
+        windowMethods.switchTOTab(1);
 
         driver.close();
         windowMethods.switchTOTab(0);
@@ -46,7 +46,7 @@ public class WindowTest extends SharedData {
         WindowsOptions.get(1).click();
 
         WebElement ButonClick= driver.findElement(By.cssSelector("button[class='btn btn-primary']"));
-        ButonClick.click();
+        elementMethods.clickElement(ButonClick);
 
         windowMethods.switchTOTab(1);
 
@@ -56,15 +56,15 @@ public class WindowTest extends SharedData {
         WindowsOptions.get(2).click();
 
         WebElement Click3= driver.findElement(By.cssSelector("button[onclick='multiwindow()']"));
-        Click3.click();
+       elementMethods.clickElement(Click3);
 
-      windowMethods.switchTOTab(2);
+        windowMethods.switchTOTab(2);
 
         windowMethods.closeCurrentTab();
-       windowMethods.switchTOTab(1);
+        windowMethods.switchTOTab(1);
 
-       windowMethods.closeCurrentTab();
-       windowMethods.switchTOTab(0);
+        windowMethods.closeCurrentTab();
+        windowMethods.switchTOTab(0);
 
 
 
