@@ -4,6 +4,8 @@ import Base.SharedData;
 import Help.ElementMethods;
 import Help.PageMethods;
 import Help.WindowMethods;
+import Pages.IndexPage;
+import Pages.LoginPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -18,14 +20,13 @@ public class LogIn extends SharedData {
 
 //    public WebDriver driver;
 
-    public ElementMethods elementMethods;
-    public PageMethods pageMethods;
-    public WindowMethods windowMethods;
+    public IndexPage indexPage;
+    public LoginPage loginPage;
+
     @Test
     public void login(){
-        elementMethods= new ElementMethods(driver);
-        pageMethods= new PageMethods(driver);
-        windowMethods= new WindowMethods(driver);
+       indexPage= new IndexPage(driver);
+       loginPage= new LoginPage(driver);
 
 //        //Setam driverul de chrome
 //        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
@@ -36,23 +37,8 @@ public class LogIn extends SharedData {
 //        //facem driverul in modul maximise
 //        driver.manage().window().maximize();
 
-        WebElement signinElement=driver.findElement(By.id("btn1"));
-        elementMethods.clickElement(signinElement);
-
-        WebElement emailelement=driver.findElement(By.cssSelector("input[placeholder='E mail']"));
-        elementMethods.fillElement(emailelement, "maricarmen.manolache@gmail.com");
-
-        WebElement passwordelement=driver.findElement(By.cssSelector("input[placeholder='Password']"));
-        elementMethods.fillElement(passwordelement,"121212");
-
-        WebElement enterelement=driver.findElement(By.id("enterbtn"));
-        elementMethods.clickElement(enterelement);
-
-        WebElement errormsgelement=driver.findElement(By.id("errormsg"));
-        elementMethods.validationElementText(errormsgelement, "Invalid User Name or PassWord");
-        //quit=inchide instanta cu toate taburile deschise
-        //close= inchide tabul curent
-        driver.close();
+       indexPage.clickSignIn();
+       loginPage.loginInvalidProcess("test123@yahoo.com", "test1212", "Invalid User Name or PassWord");
     }
 
 }

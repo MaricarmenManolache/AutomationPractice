@@ -11,9 +11,10 @@ public class PageMethods {
     public WebDriver driver;
 
     public PageMethods(WebDriver driver) {
+
         this.driver = driver;
     }
-    //asteapta sa se incarva pt navigate url
+    //asteapta sa se incarce pt navigate url
     public void navigateToURL (String value){
         driver.navigate().to(value);
         waitExplicittoLoadURL(value);
